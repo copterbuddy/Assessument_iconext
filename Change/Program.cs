@@ -16,14 +16,14 @@ public class Program
 
         if (CheckCanChangeOnlyCoin3(amount))
         {
-            totalCoin3 = amount / COIN3;
+            totalCoin3 = GetCoin3FromAmount(amount);
             return $"{totalCoin10} {totalCoin3}";
         }
 
-        totalCoin10 = amount / COIN10;
-        int remeaningAmount = totalCoin10 * COIN10;
+        totalCoin10 = GetCoin10FromAmount(amount);
+        int remeaningAmount = GetRemeaningAmount(totalCoin10);
 
-        totalCoin3 = (amount - remeaningAmount) / COIN3;
+        totalCoin3 = GetCoin3FromRemeaningAmount(amount, remeaningAmount);
 
         CheckCanChangeModel checkCanChangeModel = new CheckCanChangeModel()
         {
@@ -39,6 +39,26 @@ public class Program
         }
 
         return "Cannot Change";
+    }
+
+    private static int GetRemeaningAmount(int totalCoin10)
+    {
+        return totalCoin10 * COIN10;
+    }
+
+    private static int GetCoin3FromRemeaningAmount(int amount, int remeaningAmount)
+    {
+        return (amount - remeaningAmount) / COIN3;
+    }
+
+    private static int GetCoin10FromAmount(int amount)
+    {
+        return amount / COIN10;
+    }
+
+    private static int GetCoin3FromAmount(int amount)
+    {
+        return amount / COIN3;
     }
 
     private static bool CheckCanChange(CheckCanChangeModel canChangeModel)
