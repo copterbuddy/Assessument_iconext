@@ -10,6 +10,7 @@ public class Progran
     [InlineData(5)]
     [InlineData(7)]
     [InlineData(8)]
+    [InlineData(11)]
     public void Want_CannotChange(int paid)
     {
         string want = Program.Change(paid);
