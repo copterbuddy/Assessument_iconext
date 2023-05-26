@@ -4,6 +4,9 @@ public class Progran
 {
 
     [Theory]
+    [InlineData(-10)]
+    [InlineData(-3)]
+    [InlineData(0)]
     [InlineData(1)]
     [InlineData(2)]
     [InlineData(4)]

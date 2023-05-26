@@ -8,7 +8,7 @@ public partial class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Console.WriteLine(Change(10));
     }
     public static string Change(int amount)
     {

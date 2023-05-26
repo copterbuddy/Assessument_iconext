@@ -29,9 +29,17 @@ public partial class Program
         public int TotalCoin10 => CanChangeOnlyCoin3 ? 0 : Amount / COIN10;
 
         public int RemeaningAmount => TotalCoin10 * COIN10;
-        public bool CanChangeOnlyCoin3 => Amount % COIN3 == 0;
+        public bool CanChangeOnlyCoin3 => Amount % COIN3 is 0;
         public bool CanNormalCoin => (TotalCoin3 * COIN3) + (TotalCoin10 * COIN10) == Amount;
-        public bool CanChange => CanChangeOnlyCoin3 || CanNormalCoin;
+        public bool CanChange
+        {
+            get
+            {
+                if (Amount <= 0) return false;
+
+                return CanChangeOnlyCoin3 || CanNormalCoin;
+            }
+        }
 
         public string DisplayChangeResult => $"{TotalCoin10} {TotalCoin3}";
         public string DisplayCannotChangeResult => "Cannot Change";
