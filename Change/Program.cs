@@ -22,13 +22,18 @@ public class Program
 
         changeCoin3 = (amount - remeaningAmount) / 3;
 
-        if ((changeCoin3 * 3) + (changeCoin10 * 10) == amount)
+        if (CheckCanChange(amount, changeCoin3, changeCoin10))
         {
             return $"{changeCoin10} {changeCoin3}";
 
         }
 
         return "Cannot Change";
+    }
+
+    private static bool CheckCanChange(int amount, int changeCoin3, int changeCoin10)
+    {
+        return (changeCoin3 * 3) + (changeCoin10 * 10) == amount;
     }
 
     private static bool CheckCanChangeOnlyCoin3(int amount)
