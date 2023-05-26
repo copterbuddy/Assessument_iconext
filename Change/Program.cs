@@ -14,21 +14,6 @@ public partial class Program
     {
         ChangeModel changeModel = new ChangeModel(amount: amount);
 
-        if (changeModel.CheckCanChangeOnlyCoin3())
-        {
-            changeModel.TotalCoin3 = changeModel.GetTotalCoinFromAmount(coinType: COIN3);
-            return changeModel.DisplayChangeResult;
-        }
-
-        changeModel.TotalCoin10 = changeModel.GetTotalCoinFromAmount(coinType: COIN10);
-        changeModel.TotalCoin3 = changeModel.GetTotalCoinFromRemeaningAmount(coinType: COIN3);
-
-        if (changeModel.CheckCanChange())
-        {
-            return changeModel.DisplayChangeResult;
-
-        }
-
-        return changeModel.DisplayCannotChangeResult;
+        return changeModel.CanChange ? changeModel.DisplayChangeResult : changeModel.DisplayCannotChangeResult;
     }
 }
