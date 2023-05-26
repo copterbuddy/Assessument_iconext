@@ -2,6 +2,9 @@
 
 public class Program
 {
+    public static int COIN3 = 3;
+    public static int COIN10 = 10;
+
     static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
@@ -13,14 +16,14 @@ public class Program
 
         if (CheckCanChangeOnlyCoin3(amount))
         {
-            changeCoin3 = amount / 3;
+            changeCoin3 = amount / COIN3;
             return $"{changeCoin10} {changeCoin3}";
         }
 
-        changeCoin10 = amount / 10;
-        int remeaningAmount = changeCoin10 * 10;
+        changeCoin10 = amount / COIN10;
+        int remeaningAmount = changeCoin10 * COIN10;
 
-        changeCoin3 = (amount - remeaningAmount) / 3;
+        changeCoin3 = (amount - remeaningAmount) / COIN3;
 
         CheckCanChangeModel checkCanChangeModel = new CheckCanChangeModel()
         {
@@ -40,12 +43,12 @@ public class Program
 
     private static bool CheckCanChange(CheckCanChangeModel canChangeModel)
     {
-        return (canChangeModel.ChangeCoin3 * 3) + (canChangeModel.ChangeCoin10 * 10) == canChangeModel.Amount;
+        return (canChangeModel.ChangeCoin3 * COIN3) + (canChangeModel.ChangeCoin10 * COIN10) == canChangeModel.Amount;
     }
 
     private static bool CheckCanChangeOnlyCoin3(int amount)
     {
-        return amount % 3 == 0;
+        return amount % COIN3 == 0;
     }
 
     public class CheckCanChangeModel
