@@ -11,30 +11,30 @@ public class Program
     }
     public static string Change(int amount)
     {
-        int changeCoin3 = 0;
-        int changeCoin10 = 0;
+        int totalCoin3 = 0;
+        int totalCoin10 = 0;
 
         if (CheckCanChangeOnlyCoin3(amount))
         {
-            changeCoin3 = amount / COIN3;
-            return $"{changeCoin10} {changeCoin3}";
+            totalCoin3 = amount / COIN3;
+            return $"{totalCoin10} {totalCoin3}";
         }
 
-        changeCoin10 = amount / COIN10;
-        int remeaningAmount = changeCoin10 * COIN10;
+        totalCoin10 = amount / COIN10;
+        int remeaningAmount = totalCoin10 * COIN10;
 
-        changeCoin3 = (amount - remeaningAmount) / COIN3;
+        totalCoin3 = (amount - remeaningAmount) / COIN3;
 
         CheckCanChangeModel checkCanChangeModel = new CheckCanChangeModel()
         {
             Amount = amount,
-            ChangeCoin3 = changeCoin3,
-            ChangeCoin10 = changeCoin10,
+            ChangeCoin3 = totalCoin3,
+            ChangeCoin10 = totalCoin10,
         };
 
         if (CheckCanChange(checkCanChangeModel))
         {
-            return $"{changeCoin10} {changeCoin3}";
+            return $"{totalCoin10} {totalCoin3}";
 
         }
 
