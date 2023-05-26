@@ -22,7 +22,14 @@ public class Program
 
         changeCoin3 = (amount - remeaningAmount) / 3;
 
-        if (CheckCanChange(amount, changeCoin3, changeCoin10))
+        CheckCanChangeModel checkCanChangeModel = new CheckCanChangeModel()
+        {
+            Amount = amount,
+            ChangeCoin3 = changeCoin3,
+            ChangeCoin10 = changeCoin10,
+        };
+
+        if (CheckCanChange(checkCanChangeModel))
         {
             return $"{changeCoin10} {changeCoin3}";
 
@@ -31,13 +38,20 @@ public class Program
         return "Cannot Change";
     }
 
-    private static bool CheckCanChange(int amount, int changeCoin3, int changeCoin10)
+    private static bool CheckCanChange(CheckCanChangeModel canChangeModel)
     {
-        return (changeCoin3 * 3) + (changeCoin10 * 10) == amount;
+        return (canChangeModel.ChangeCoin3 * 3) + (canChangeModel.ChangeCoin10 * 10) == canChangeModel.Amount;
     }
 
     private static bool CheckCanChangeOnlyCoin3(int amount)
     {
         return amount % 3 == 0;
+    }
+
+    public class CheckCanChangeModel
+    {
+        public int Amount { get; set; }
+        public int ChangeCoin3 { get; set; }
+        public int ChangeCoin10 { get; set;}
     }
 }
