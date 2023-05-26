@@ -8,7 +8,12 @@ public partial class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine(Change(10));
+        for (int i = 1; i <= 200; i++)
+        {
+            Console.WriteLine($"Paid:{i} Change {Change(i)}");
+        }
+        
+        Console.ReadKey();
     }
     public static string Change(int amount)
     {
