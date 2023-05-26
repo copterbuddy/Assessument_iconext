@@ -6,4 +6,8 @@ public class Program
     {
         Console.WriteLine("Hello, World!");
     }
+    public static string Change(int got)
+    {
+        return "Cannot Change";
+    }
 }
