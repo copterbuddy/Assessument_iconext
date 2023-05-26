@@ -8,6 +8,8 @@ public class Progran
     [InlineData(2)]
     [InlineData(4)]
     [InlineData(5)]
+    [InlineData(7)]
+    [InlineData(8)]
     public void Want_CannotChange(int paid)
     {
         string want = Program.Change(paid);
@@ -23,5 +25,15 @@ public class Progran
         string want = Program.Change(paid);
 
         Assert.Equal("0 1", want);
+    }
+
+    [Fact]
+    public void Want_0_2_Give_6()
+    {
+        int paid = 6;
+
+        string want = Program.Change(paid);
+
+        Assert.Equal("0 2", want);
     }
 }
