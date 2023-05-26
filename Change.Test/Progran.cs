@@ -6,6 +6,8 @@ public class Progran
     [Theory]
     [InlineData(1)]
     [InlineData(2)]
+    [InlineData(4)]
+    [InlineData(5)]
     public void Want_CannotChange(int paid)
     {
         string want = Program.Change(paid);

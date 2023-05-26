@@ -13,11 +13,11 @@ public class Program
 
         change3coin = got / 3;
 
-        if (change3coin > 0 || change10coin > 0)
+        if ((change3coin * 3) + (change10coin * 10) != got)
         {
-            return $"{change10coin} {change3coin}";
+            return "Cannot Change";
         }
 
-        return "Cannot Change";
+        return $"{change10coin} {change3coin}";
     }
 }
