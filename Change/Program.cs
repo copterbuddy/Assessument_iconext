@@ -1,6 +1,6 @@
 ﻿namespace Change;
 
-public class Program
+public partial class Program
 {
     public static int COIN3 = 3;
     public static int COIN10 = 10;
@@ -26,8 +26,8 @@ public class Program
         totalCoin3 = GetCoin3FromRemeaningAmount(amount, remeaningAmount);
 
         ChangeModel checkCanChangeModel = new ChangeModel(amount: amount,
-                                                                        totalCoin10: totalCoin10,
-                                                                        totalCoin3: totalCoin3);
+                                                totalCoin10: totalCoin10,
+                                                totalCoin3: totalCoin3);
 
         if (CheckCanChange(checkCanChangeModel))
         {
@@ -66,18 +66,5 @@ public class Program
     private static bool CheckCanChangeOnlyCoin3(int amount)
     {
         return amount % COIN3 == 0;
-    }
-
-    public class ChangeModel
-    {
-        public int Amount { get; set; }
-        public int ChangeCoin3 { get; set; }
-        public int ChangeCoin10 { get; set;}
-        public ChangeModel(int amount, int totalCoin10, int totalCoin3)
-        {
-            Amount = amount;
-            ChangeCoin10 = totalCoin10;
-            ChangeCoin3 = totalCoin3;
-        }
     }
 }
