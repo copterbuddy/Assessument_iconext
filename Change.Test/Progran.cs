@@ -36,4 +36,24 @@ public class Progran
 
         Assert.Equal("0 2", want);
     }
+
+    [Fact]
+    public void Want_0_3_Give_9()
+    {
+        int paid = 9;
+
+        string want = Program.Change(paid);
+
+        Assert.Equal("0 3", want);
+    }
+
+    [Fact]
+    public void Want_1_0_Give_10()
+    {
+        int paid = 10;
+
+        string want = Program.Change(paid);
+
+        Assert.Equal("1 0", want);
+    }
 }
