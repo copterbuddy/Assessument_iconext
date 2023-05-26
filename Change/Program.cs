@@ -25,12 +25,9 @@ public class Program
 
         totalCoin3 = GetCoin3FromRemeaningAmount(amount, remeaningAmount);
 
-        CheckCanChangeModel checkCanChangeModel = new CheckCanChangeModel()
-        {
-            Amount = amount,
-            ChangeCoin3 = totalCoin3,
-            ChangeCoin10 = totalCoin10,
-        };
+        ChangeModel checkCanChangeModel = new ChangeModel(amount: amount,
+                                                                        totalCoin10: totalCoin10,
+                                                                        totalCoin3: totalCoin3);
 
         if (CheckCanChange(checkCanChangeModel))
         {
@@ -61,7 +58,7 @@ public class Program
         return amount / COIN3;
     }
 
-    private static bool CheckCanChange(CheckCanChangeModel canChangeModel)
+    private static bool CheckCanChange(ChangeModel canChangeModel)
     {
         return (canChangeModel.ChangeCoin3 * COIN3) + (canChangeModel.ChangeCoin10 * COIN10) == canChangeModel.Amount;
     }
@@ -71,10 +68,16 @@ public class Program
         return amount % COIN3 == 0;
     }
 
-    public class CheckCanChangeModel
+    public class ChangeModel
     {
         public int Amount { get; set; }
         public int ChangeCoin3 { get; set; }
         public int ChangeCoin10 { get; set;}
+        public ChangeModel(int amount, int totalCoin10, int totalCoin3)
+        {
+            Amount = amount;
+            ChangeCoin10 = totalCoin10;
+            ChangeCoin3 = totalCoin3;
+        }
     }
 }
