@@ -4,14 +4,14 @@ public partial class Program
 {
     public class ChangeModel
     {
-        public int Amount { get; set; }
-        public int ChangeCoin3 { get; set; }
-        public int ChangeCoin10 { get; set;}
-        public ChangeModel(int amount, int totalCoin10, int totalCoin3)
+        public int Amount { get; set; } = 0;
+        public int TotalCoin3 { get; set; } = 0;
+        public int TotalCoin10 { get; set; } = 0;
+        public ChangeModel(int amount)
         {
             Amount = amount;
-            ChangeCoin10 = totalCoin10;
-            ChangeCoin3 = totalCoin3;
         }
+
+        public string DisplayResult => $"{TotalCoin10} {TotalCoin3}";
     }
 }

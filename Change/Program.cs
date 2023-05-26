@@ -11,27 +11,23 @@ public partial class Program
     }
     public static string Change(int amount)
     {
-        int totalCoin3 = 0;
-        int totalCoin10 = 0;
+
+        ChangeModel changeModel = new ChangeModel(amount: amount);
 
         if (CheckCanChangeOnlyCoin3(amount))
         {
-            totalCoin3 = GetCoin3FromAmount(amount);
-            return $"{totalCoin10} {totalCoin3}";
+            changeModel.TotalCoin3 = GetCoin3FromAmount(amount);
+            return changeModel.DisplayResult;
         }
 
-        totalCoin10 = GetCoin10FromAmount(amount);
-        int remeaningAmount = GetRemeaningAmount(totalCoin10);
+        changeModel.TotalCoin10 = GetCoin10FromAmount(amount);
+        int remeaningAmount = GetRemeaningAmount(changeModel.TotalCoin10);
 
-        totalCoin3 = GetCoin3FromRemeaningAmount(amount, remeaningAmount);
+        changeModel.TotalCoin3 = GetCoin3FromRemeaningAmount(amount, remeaningAmount);
 
-        ChangeModel checkCanChangeModel = new ChangeModel(amount: amount,
-                                                totalCoin10: totalCoin10,
-                                                totalCoin3: totalCoin3);
-
-        if (CheckCanChange(checkCanChangeModel))
+        if (CheckCanChange(changeModel))
         {
-            return $"{totalCoin10} {totalCoin3}";
+            return changeModel.DisplayResult;
 
         }
 
@@ -60,7 +56,7 @@ public partial class Program
 
     private static bool CheckCanChange(ChangeModel canChangeModel)
     {
-        return (canChangeModel.ChangeCoin3 * COIN3) + (canChangeModel.ChangeCoin10 * COIN10) == canChangeModel.Amount;
+        return (canChangeModel.TotalCoin3 * COIN3) + (canChangeModel.TotalCoin10 * COIN10) == canChangeModel.Amount;
     }
 
     private static bool CheckCanChangeOnlyCoin3(int amount)
