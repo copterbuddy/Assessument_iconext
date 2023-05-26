@@ -6,24 +6,26 @@ public class Program
     {
         Console.WriteLine("Hello, World!");
     }
-    public static string Change(int got)
+    public static string Change(int amount)
     {
-        int change3coin, change10coin, used3coin, used10coin, use3coinonly;
-        change10coin = got / 10;
-        used10coin = change10coin * 10;
+        int changeCoin3;
+        int changCoin10;
 
-        change3coin = (got - used10coin) / 3;
+        changCoin10 = amount / 10;
+        int remeaningAmount = changCoin10 * 10;
 
-        use3coinonly = got % 3;
+        changeCoin3 = (amount - remeaningAmount) / 3;
+
+        int use3coinonly = amount % 3;
         if (use3coinonly == 0)
         {
-            change10coin = 0;
-            change3coin = got / 3;
+            changCoin10 = 0;
+            changeCoin3 = amount / 3;
         }
 
-        if ((change3coin * 3) + (change10coin * 10) == got)
+        if ((changeCoin3 * 3) + (changCoin10 * 10) == amount)
         {
-            return $"{change10coin} {change3coin}";
+            return $"{changCoin10} {changeCoin3}";
             
         }
 
