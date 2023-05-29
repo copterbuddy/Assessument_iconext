@@ -22,7 +22,7 @@ public partial class Program
                 for (int i = coin10FromTotalAmount; i >= 0; i--)
                 {
                     int remean = i * COIN10;
-                    if ((Amount - remean) % COIN3 == 0)
+                    if (CanChangeByMaxCoin10(remean))
                     {
                         return (Amount - remean) / COIN3;
                     }
@@ -42,7 +42,7 @@ public partial class Program
                 for (int i = coin10FromTotalAmount; i >= 0; i--)
                 {
                     int remean = i * COIN10;
-                    if ((Amount - remean) % COIN3 == 0)
+                    if (CanChangeByMaxCoin10(remean))
                     {
                         return i;
                     }
@@ -68,5 +68,12 @@ public partial class Program
         public string DisplayCannotChangeResult => "Cannot Change";
         public int GetCoin10FromTotalAmount => Amount / COIN10;
         #endregion  Getter Propperty
+
+        #region method
+        public bool CanChangeByMaxCoin10(int remean)
+        {
+            return (Amount - remean) % COIN3 == 0;
+        }
+        #endregion metohd
     }
 }
