@@ -18,10 +18,11 @@ public partial class Program
             {
 
                 int coin10FromTotalAmount = GetCoin10FromTotalAmount();
+
                 for (int i = coin10FromTotalAmount; i >= 0; i--)
                 {
                     int remean = i * COIN10;
-                    if ((Amount - remean) % 3 == 0)
+                    if ((Amount - remean) % COIN3 == 0)
                     {
                         return (Amount - remean) / COIN3;
                     }
@@ -36,8 +37,8 @@ public partial class Program
         {
             get
             {
-
                 int coin10FromTotalAmount = GetCoin10FromTotalAmount();
+
                 for (int i = coin10FromTotalAmount; i >= 0; i--)
                 {
                     int remean = i * COIN10;

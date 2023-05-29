@@ -144,12 +144,32 @@ public class Progran
     }
 
     [Fact]
-    public void Want_0_7_Give_22()
+    public void Want_1_4_Give_22()
     {
         int paid = 22;
 
         string want = Program.Change(paid);
 
         Assert.Equal("1 4", want);
+    }
+
+    [Fact]
+    public void Want_6_1_Give_63()
+    {
+        int paid = 63;
+
+        string want = Program.Change(paid);
+
+        Assert.Equal("6 1", want);
+    }
+
+    [Fact]
+    public void Want_12_1_Give_123()
+    {
+        int paid = 123;
+
+        string want = Program.Change(paid);
+
+        Assert.Equal("12 1", want);
     }
 }
