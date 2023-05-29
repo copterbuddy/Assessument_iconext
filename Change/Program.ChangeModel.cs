@@ -32,8 +32,7 @@ public partial class Program
             }
         }
 
-        public int TotalCoin10 => Amount / COIN10;
-        public int TotalCoin10_2
+        public int TotalCoin10
         {
             get
             {
@@ -53,7 +52,7 @@ public partial class Program
             }
         }
 
-        public int RemeaningAmount => TotalCoin10_2 * COIN10;
+        public int RemeaningAmount => TotalCoin10 * COIN10;
         public bool CanChangeOnlyCoin3 => Amount % COIN3 is 0;
         public bool CanChange
         {
@@ -61,11 +60,11 @@ public partial class Program
             {
                 if (Amount <= 0) return false;
 
-                return (TotalCoin3 * COIN3) + (TotalCoin10_2 * COIN10) == Amount;
+                return (TotalCoin3 * COIN3) + (TotalCoin10 * COIN10) == Amount;
             }
         }
 
-        public string DisplayChangeResult => $"{TotalCoin10_2} {TotalCoin3}";
+        public string DisplayChangeResult => $"{TotalCoin10} {TotalCoin3}";
         public string DisplayCannotChangeResult => "Cannot Change";
         #endregion  Getter Propperty
 
