@@ -16,18 +16,14 @@ public partial class Program
         {
             get
             {
-                if (CanChangeOnlyCoin3)
-                {
-                    return Amount / COIN3;
-                }
 
-                int temp10 = Amount / 10;
+                int temp10 = Amount / COIN10;
                 for (int i = temp10; i > 0; i--)
                 {
-                    int remean = i * 10;
+                    int remean = i * COIN10;
                     if ((Amount - remean) % 3 == 0)
                     {
-                        return (Amount - remean) / 3;
+                        return (Amount - remean) / COIN3;
                     }
                 }
 
@@ -36,21 +32,17 @@ public partial class Program
             }
         }
 
-        public int TotalCoin10 => CanChangeOnlyCoin3 ? 0 : Amount / COIN10;
+        public int TotalCoin10 => Amount / COIN10;
         public int TotalCoin10_2
         {
             get
             {
-                if (CanChangeOnlyCoin3)
-                {
-                    return 0;
-                }
 
-                int temp10 = Amount / 10;
-                for (int i = temp10; i > 0; i--)
+                int temp10 = Amount / COIN10;
+                for (int i = temp10; i >= 0; i--)
                 {
-                    int remean = i * 10;
-                    if ((Amount - remean) % 3 == 0)
+                    int remean = i * COIN10;
+                    if ((Amount - remean) % COIN3 == 0)
                     {
                         return i;
                     }
@@ -63,14 +55,13 @@ public partial class Program
 
         public int RemeaningAmount => TotalCoin10_2 * COIN10;
         public bool CanChangeOnlyCoin3 => Amount % COIN3 is 0;
-        public bool CanNormalCoin => (TotalCoin3 * COIN3) + (TotalCoin10_2 * COIN10) == Amount;
         public bool CanChange
         {
             get
             {
                 if (Amount <= 0) return false;
 
-                return /*CanChangeOnlyCoin3 || */CanNormalCoin;
+                return (TotalCoin3 * COIN3) + (TotalCoin10_2 * COIN10) == Amount;
             }
         }
 
