@@ -142,4 +142,14 @@ public class Progran
 
         Assert.Equal("0 7", want);
     }
+
+    [Fact]
+    public void Want_0_7_Give_22()
+    {
+        int paid = 22;
+
+        string want = Program.Change(paid);
+
+        Assert.Equal("1 4", want);
+    }
 }
