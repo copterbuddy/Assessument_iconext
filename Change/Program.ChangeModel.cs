@@ -17,8 +17,8 @@ public partial class Program
             get
             {
 
-                int temp10 = Amount / COIN10;
-                for (int i = temp10; i > 0; i--)
+                int coin10FromTotalAmount = GetCoin10FromTotalAmount();
+                for (int i = coin10FromTotalAmount; i >= 0; i--)
                 {
                     int remean = i * COIN10;
                     if ((Amount - remean) % 3 == 0)
@@ -37,8 +37,8 @@ public partial class Program
             get
             {
 
-                int temp10 = Amount / COIN10;
-                for (int i = temp10; i >= 0; i--)
+                int coin10FromTotalAmount = GetCoin10FromTotalAmount();
+                for (int i = coin10FromTotalAmount; i >= 0; i--)
                 {
                     int remean = i * COIN10;
                     if ((Amount - remean) % COIN3 == 0)
@@ -53,7 +53,6 @@ public partial class Program
         }
 
         public int RemeaningAmount => TotalCoin10 * COIN10;
-        public bool CanChangeOnlyCoin3 => Amount % COIN3 is 0;
         public bool CanChange
         {
             get
@@ -68,5 +67,11 @@ public partial class Program
         public string DisplayCannotChangeResult => "Cannot Change";
         #endregion  Getter Propperty
 
+        #region method
+        public int GetCoin10FromTotalAmount()
+        {
+            return Amount / COIN10;
+        }
+        #endregion method
     }
 }
