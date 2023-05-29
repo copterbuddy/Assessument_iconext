@@ -17,7 +17,7 @@ public partial class Program
             get
             {
 
-                int coin10FromTotalAmount = GetCoin10FromTotalAmount();
+                int coin10FromTotalAmount = GetCoin10FromTotalAmount;
 
                 for (int i = coin10FromTotalAmount; i >= 0; i--)
                 {
@@ -37,7 +37,7 @@ public partial class Program
         {
             get
             {
-                int coin10FromTotalAmount = GetCoin10FromTotalAmount();
+                int coin10FromTotalAmount = GetCoin10FromTotalAmount;
 
                 for (int i = coin10FromTotalAmount; i >= 0; i--)
                 {
@@ -66,13 +66,7 @@ public partial class Program
 
         public string DisplayChangeResult => $"{TotalCoin10} {TotalCoin3}";
         public string DisplayCannotChangeResult => "Cannot Change";
+        public int GetCoin10FromTotalAmount => Amount / COIN10;
         #endregion  Getter Propperty
-
-        #region method
-        public int GetCoin10FromTotalAmount()
-        {
-            return Amount / COIN10;
-        }
-        #endregion method
     }
 }
